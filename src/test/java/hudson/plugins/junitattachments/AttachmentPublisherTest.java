@@ -1,5 +1,6 @@
 package hudson.plugins.junitattachments;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.Collections;
@@ -56,8 +57,13 @@ public class AttachmentPublisherTest extends HudsonTestCase {
 
         assertEquals(2, attachments.size());
 
-        assertEquals("file", attachments.get(0));
+        assertEquals("file.log", attachments.get(0));
         assertEquals("test.foo.bar.DefaultIntegrationTest-output.txt", attachments.get(1));
+
+        File zippedLog = new File(b.getRootDir(), "junit-attachments/test.foo.bar.DefaultIntegrationTest/file.log.gz");
+        assertTrue("zipped log " + zippedLog + " does not exist", zippedLog.exists());
+        File log = new File(b.getRootDir(), "junit-attachments/test.foo.bar.DefaultIntegrationTest/file.log");
+        assertTrue("log " + log + " exists", !log.exists());
     }
 
     public static final class TouchBuilder extends Builder implements

@@ -15,6 +15,7 @@ import net.sf.json.JSONException;
 import net.sf.json.JSONObject;
 import org.apache.tools.ant.DirectoryScanner;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -104,6 +105,12 @@ public class GetTestDataMethodObject {
                 d.setBasedir(target.getRemote());
                 d.scan();
                 attachments.put(className, new ArrayList<String>(Arrays.asList(d.getIncludedFiles())));
+				
+				for (String file: d.getIncludedFiles()) {
+					if (file.endsWith((".log"))) {
+						LogZipper.zip(new File(target.getRemote(), file));
+					}
+				}
             }
         }
     }
