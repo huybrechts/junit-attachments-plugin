@@ -5,6 +5,7 @@ import hudson.model.DirectoryBrowserSupport;
 import hudson.model.Hudson;
 import hudson.tasks.junit.TestAction;
 import hudson.tasks.test.TestObject;
+import org.kohsuke.stapler.export.Exported;
 
 import java.util.List;
 
@@ -48,6 +49,7 @@ public class AttachmentTestAction extends TestAction {
 		return text;
 	}
 
+    @Exported
 	public List<String> getAttachments() {
 		return attachments;
 	}
