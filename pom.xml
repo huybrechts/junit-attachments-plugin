@@ -47,6 +47,7 @@
             compare: http://docs.codehaus.org/display/MAVENUSER/POM+Element+for+Source+File+Encoding
         -->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <findbugs.failOnError>false</findbugs.failOnError>
     </properties>
 
     <developers>
@@ -55,9 +56,5 @@
             <name>Tom Huybrechts</name>
         </developer>
     </developers>
-
-    <properties>
-        <findbugs.failOnError>false</findbugs.failOnError>
-    </properties>
     
 </project>
